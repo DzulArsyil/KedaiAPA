@@ -1,1 +1,212 @@
 @import "tailwindcss";
+
+@theme {
+  /* ── Palet Kedai APA: hijau kedai × kuning spanduk × kertas hangat ── */
+  --color-pine-950: #0c1f15;
+  --color-pine-900: #123121;
+  --color-pine-800: #1a4530;
+  --color-pine-700: #24593e;
+  --color-pine-600: #2f6e4e;
+  --color-pine-200: #b8cfc0;
+  --color-pine-100: #dce7dd;
+
+  --color-cream-50: #faf6ea;
+  --color-cream-100: #f4edda;
+  --color-cream-200: #eadfc4;
+  --color-cream-300: #dcd0af;
+
+  --color-gold-200: #ffe29a;
+  --color-gold-300: #ffd766;
+  --color-gold-400: #ffc531;
+  --color-gold-500: #f0ae00;
+  --color-gold-700: #8a6400;
+
+  --color-ink-900: #182420;
+  --color-ink-700: #2e3d35;
+  --color-ink-500: #5a6a5f;
+  --color-ink-400: #7d8b80;
+
+  --font-display: "Bricolage Grotesque", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgba(12, 31, 21, 0.06), 0 12px 32px -12px rgba(12, 31, 21, 0.18);
+  --shadow-lift: 0 2px 4px rgba(12, 31, 21, 0.08), 0 24px 48px -16px rgba(12, 31, 21, 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 92px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream-50);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-pine-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─────────────────────── tekstur & pola ─────────────────────── */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(18, 49, 33, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-dots-light {
+  background-image: radial-gradient(rgba(250, 246, 234, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.bg-weave {
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255, 197, 49, 0.05) 0 2px, transparent 2px 14px),
+    repeating-linear-gradient(-45deg, rgba(250, 246, 234, 0.04) 0 2px, transparent 2px 14px);
+}
+
+/* ─────────────────────── tipografi khas ─────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.text-outline-cream {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(250, 246, 234, 0.85);
+}
+
+.text-outline-gold {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-gold-400);
+}
+
+/* ─────────────────────── motion signature ─────────────────────── */
+@keyframes line-up {
+  to { transform: translateY(0); }
+}
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+}
+.mask-line > span {
+  display: block;
+  transform: translateY(112%);
+  animation: line-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee var(--speed, 30s) linear infinite;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+@keyframes breathe {
+  from { transform: scale(1); }
+  to { transform: scale(1.07); }
+}
+.animate-breathe {
+  animation: breathe 16s ease-in-out infinite alternate;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+.animate-bob {
+  animation: bob 5.5s ease-in-out infinite;
+}
+
+@keyframes pin-pulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+.animate-pin-pulse {
+  animation: pin-pulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes route-dash {
+  to { stroke-dashoffset: -240; }
+}
+.animate-route {
+  stroke-dasharray: 10 14;
+  animation: route-dash 9s linear infinite;
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--rv, 0ms);
+  will-change: opacity, transform;
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* stempel "CONTOH" */
+.stamp {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  border: 1.5px dashed currentColor;
+  transform: rotate(6deg);
+}
+
+/* scrollbar halus */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-cream-100); }
+::-webkit-scrollbar-thumb { background: var(--color-pine-800); border-radius: 8px; }
+
+/* ─────────────────────── reduced motion ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .mask-line > span { transform: none; animation: none; }
+  .reveal { opacity: 1; transform: none; }
+  .animate-marquee,
+  .animate-spin-slow,
+  .animate-breathe,
+  .animate-bob,
+  .animate-pin-pulse,
+  .animate-route {
+    animation: none !important;
+  }
+}

@@ -1,97 +1,76 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>coder-app-name</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    <title>Kedai APA — Kedai Makanan & Catering di Karawang Kulon, Karawang</title>
+    <meta
+      name="description"
+      content="Kedai APA — kedai makanan & catering di Jl. Kertabumi (seberang Richeese Kertabumi), Karawang Kulon, Karawang Barat. Lihat menu, pesan antar, dan konsultasi catering langsung via WhatsApp."
     />
-    <style>
-      /* 内联样式确保主题色立即生效，避免闪烁 */
-      html,
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-      }
-      html.light,
-      html.light body {
-        background-color: #ffffff !important;
-        color: #000000;
-      }
-      html.dark,
-      html.dark body {
-        background-color: #1a1a1a !important;
-        color: #ffffff;
-      }
-    </style>
-    <script>
-      // 在 React 加载前立即设置主题，避免闪烁
-      (function () {
-        const isInIframe = window.self !== window.top;
+    <meta name="keywords" content="kedai makanan karawang, kuliner karawang, catering karawang, pesan makanan karawang, nasi kotak karawang, kedai apa" />
+    <meta name="author" content="Kedai APA" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://kedaiapa.example/" />
 
-        function applyThemeToDOM(theme) {
-          document.documentElement.classList.remove("light", "dark");
-          document.documentElement.classList.add(theme);
-          document.documentElement.setAttribute("data-theme", theme);
-        }
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:site_name" content="Kedai APA" />
+    <meta property="og:title" content="Kedai APA — Makan Enak, Pesan Gampang | Karawang" />
+    <meta
+      property="og:description"
+      content="Kedai makanan & catering di Jl. Kertabumi, Karawang Kulon. Pilih menu, tekan pesan, lanjut ngobrol di WhatsApp."
+    />
+    <meta property="og:url" content="https://kedaiapa.example/" />
+    <meta property="og:image" content="https://image.qwenlm.ai/generated-images/1946ac99-d672-4132-96a4-47ccc86237d4/_result.png" />
 
-        if (isInIframe) {
-          // 监听父窗口主动推送的主题消息
-          window.addEventListener("message", function (event) {
-            if (event.data && typeof event.data.theme === "string") {
-              const theme = event.data.theme;
-              if (theme === "light" || theme === "dark") {
-                applyThemeToDOM(theme);
-              }
-            }
-          });
-        } else {
-          // 非 iframe 环境，使用默认 light 主题
-          applyThemeToDOM("light");
-        }
-      })();
-    </script>
-      <script>
-      (function () {
-        if (window.self === window.top) return;
-        var reported = {};
-        window.addEventListener("error", function (event) {
-          // 资源加载失败的 error 事件没有 message，此处仅上报 JS 运行时错误
-          if (!event || !event.message) return;
-          var key =
-            event.message + "|" + (event.filename || "") + "|" + (event.lineno || 0);
-          if (reported[key]) return; // 相同错误只上报一次，避免渲染循环刷屏
-          reported[key] = true;
-          try {
-            window.parent.postMessage(
-              {
-                type: "sandbox-runtime-error",
-                payload: {
-                  message: String(event.message).slice(0, 500),
-                  filename: event.filename || "",
-                  lineno: event.lineno || 0,
-                  colno: event.colno || 0,
-                  stack:
-                    event.error && event.error.stack
-                      ? String(event.error.stack).slice(0, 2000)
-                      : ""
-                }
-              },
-              "*"
-            );
-          } catch (e) {
-            /* 上报失败不影响页面运行 */
-          }
-        });
-      })();
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kedai APA — Kedai Makanan & Catering di Karawang" />
+    <meta
+      name="twitter:description"
+      content="Makan enak, pesan gampang. Kuliner & catering di Karawang Kulon — pesan via WhatsApp."
+    />
+
+    <!-- Fonts: Bricolage Grotesque (display) + Plus Jakarta Sans (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Plus+Jakarta+Sans:ital,wght@0,400..800;1,400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C1F15'/%3E%3Cpath d='M8 20c0-5 3.6-9 8-9s8 4 8 9v1H8v-1z' fill='%23FFC531'/%3E%3Crect x='7' y='21.5' width='18' height='2.5' rx='1.25' fill='%23FAF6EA'/%3E%3Ccircle cx='16' cy='8' r='1.6' fill='%23FFC531'/%3E%3C/svg%3E"
+    />
+
+    <!-- LocalBusiness structured data (hanya data terverifikasi) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FoodEstablishment",
+        "name": "Kedai APA",
+        "description": "Kedai makanan dan catering di Karawang Kulon, Karawang Barat. Layanan pesan antar dan catering nasi kotak untuk wilayah Karawang.",
+        "servesCuisine": "Masakan Indonesia",
+        "url": "https://kedaiapa.example/",
+        "image": "https://image.qwenlm.ai/generated-images/1946ac99-d672-4132-96a4-47ccc86237d4/_result.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Kertabumi, Ruko No. 89/5 (seberang Richeese Kertabumi)",
+          "addressLocality": "Karawang Kulon, Kec. Karawang Barat",
+          "addressRegion": "Jawa Barat",
+          "postalCode": "41311",
+          "addressCountry": "ID"
+        },
+        "hasMap": "https://www.google.com/maps/search/?api=1&query=Kedai%20APA%20Jl.%20Kertabumi%20Karawang%20Kulon%20Karawang%20Barat",
+        "priceRange": "Rp"
+      }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
